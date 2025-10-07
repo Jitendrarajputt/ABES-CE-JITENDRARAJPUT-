@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* #lucky{
+            border: 5px solid black;
+            height: 300px;
+            width: 300px;
+            background-color: steelblue;
+            padding: auto;
+        } */
+         
+    </style>
+</head>
+<body id="lucky">
+    <!-- <div id="lucky">
+        <button onclick="lucky()">Click</button>
+        <p id="lll"></p> -->
+        <button onclick="red()">RED</button>
+        <button onclick="green()">GREEN</button>
+        <button onclick="blue()">BLUE</button>
+    </div>
+    <script>
+        // function lucky(){
+        //     document.getElementById("lll").innerHTML = "<h1>Hellooooooooooooooo</h1>";
+        // }
+        function red(){
+            document.getElementById("lucky").style.backgroundColor = "red";
+        }
+        function green(){
+            document.getElementById("lucky").style.backgroundColor = "green";
+        }
+        function blue(){
+            document.getElementById("lucky").style.backgroundColor = "blue";
+        }
+    </script>
+</body>
+</html>

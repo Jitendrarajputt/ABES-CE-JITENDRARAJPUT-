@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: lightblue;
+        }
+
+        #lucky {
+            border: 5px solid black;
+            height: 400px;
+            width: 400px;
+            background-color: steelblue;
+            padding: auto;
+            margin: 500px;
+        }
+
+        /* #l1{
+            height: 50px;
+            width: 50px;
+            font-size: 30px;
+            font-weight: bold;
+            border-radius: 50%;
+            margin: 250px 100px;
+            cursor: pointer;
+        }
+        #l2{
+            height: 50px;
+            width: 50px;
+            font-size: 30px;
+            font-weight: bold;
+            border-radius: 50%;
+            margin: -10000px 200px;
+            cursor: pointer;
+        } */
+        #l1, #l2 {
+            display: inline-block;
+            height: 50px;
+            width: 50px;
+            font-size: 30px;
+            font-weight: bold;
+            border-radius: 50%;
+            cursor: pointer;
+            margin: 70px;
+            text-align: center;
+     
+        }
+    </style>
+</head>
+
+<body>
+    <div id="lucky">
+        <h1 style="text-align: center;">Counter App</h1>
+        <button id="l1">+</button>
+        <button id="l2">-</button>
+        <p id="counter" style="text-align: center; font-size: 40px; font-weight: bold;">0</p>
+
+        <script>
+            var count = 0;
+
+            var counterDisplay = document.getElementById('counter');
+            var inc = document.getElementById('l1');
+            var dec = document.getElementById('l2');
+
+            inc.addEventListener('click', () => {
+                count++;
+                counterDisplay.textContent = count;
+
+            });
+
+            dec.addEventListener('click', () => {
+                count--;
+                counterDisplay.textContent = count;
+            });
+        </script>
+
+    </div>
+</body>
+
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: lightgrey;
+        }
+
+        #demo {
+            height: 400px;
+            width: 400px;
+            border: 5px solid black;
+            background-color: lightpink;
+            margin: 500px;
+            display: flex;
+        }
+
+        button {
+            height: 50px;
+            width: 100px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 20px auto;
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            display: block;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <button>HIDE</button>
+        <img src="demo.png" alt="">
+
+    </div>
+    <script>
+        var button = document.querySelector('#demo button');
+        var image = document.querySelector('#demo img');
+
+        button.addEventListener('click', () => {
+            if (image.style.display === 'none') {
+                image.style.display = 'block';
+                button.textContent = 'HIDE';
+            } else {
+                image.style.display = 'none';
+                button.textContent = 'SHOW';
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+

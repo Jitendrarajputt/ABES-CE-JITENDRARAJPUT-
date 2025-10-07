@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            width: 100px;
+            height: 100px;
+        }
+
+        .body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input {
+            display: block;
+            ;
+        }
+
+        main {
+            width: 100px;
+            height: 100px;
+            background-color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" id="main">
+        <input type="Profile Pic" placeholder="Profile Pic">
+        <input type="Name" placeholder="Name">
+        <input type="Occupation" placeholder="Occupation">
+        <input type="About" placeholder="About">
+        <input type="submit">
+    </form>
+
+
+    <script>
+        let form = document.querySelector("form");
+        let inputs = document.querySelectorAll("input");
+        let main = document.querySelector("#main");
+
+        form.addEventListener("submit", function (dets) {
+            dets.preventDefault();
+
+
+            let card = document.createElement("div");
+            card.classList.add("card");
+
+
+            let profile = document.createElement("div");
+            profile.classList.add("profile");
+
+            let img = document.createElement("img");
+
+            img.setAttribute("src", inputs[0].value);
+
+
+            let h3 = document.createElement("h3");
+
+            h3.textContent = inputs[1].value;
+
+            let h5 document.createElement("h5");
+
+            h5.textContent = inputs[2].value;
+
+            let p = document.createElement("p");
+
+            p.textContent = inputs[3].value;
+            profile.appendChild(img);
+            card.appendChild(profile);
+            card.appendChild(h3);
+            card.appendChild(h5);
+            card.appendChild(p);
+            main.appendChild(card);
+            inputs.forEach(function (inp) {
+                if (inp.type !== "submit")
+                    inp.value = "";
+            }
+});
+    </script>
+</body>
+
+</html>

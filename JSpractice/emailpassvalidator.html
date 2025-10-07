@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email & Password Validator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f4f6f8;
+        }
+
+        .container {
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 320px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .input-group input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+        #resultMessage{
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            display: display;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form autocomplete="off" id="Form">
+            <h2>Email & Password Validator</h2>
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="Enter your email">
+                <small class="error" id="emailError"></small>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password">
+                <small class="error" id="passwordError"></small>
+            </div>
+
+            <button type="submit">Validate</button>
+        </form>
+        <div id="resultMessage">
+            <!-- There are errors!! -->
+        </div>
+    </div>
+    <script>
+        let email = document.querySelector("#email");
+        let password = document.querySelector("#password");
+        let form = document.querySelector("#Form");
+        form.addEventListener("submit", function(event){
+            event.preventDefault();
+
+            document.querySelector("#emailError").textContent = "";
+            document.querySelector("#passwordError").textContent = "";
+
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            let emailans = emailRegex.test(email.value);
+            let passwordans = passwordRegex.test(password.value);
+
+            let isValid = true;
+
+            if(!emailans){
+                document.querySelector("#emailError").textContent = "Email is Incorrect";
+                document.querySelector("#emailError").style.display = "initial";
+                isValid = false;
+            } 
+            if(!passwordans){
+                document.querySelector("#passwordError").textContent = "Password is Incorrect";
+                document.querySelector("#passwordError").style.display = "initial";
+                isValid = false;
+            }
+            if(isValid){
+                document.querySelector("#resultMessage").textContent = "Everything is correct!!";
+            }
+        });
+    </script>
+</body>
+
+</html>

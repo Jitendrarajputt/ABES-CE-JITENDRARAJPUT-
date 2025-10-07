@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Toggle</title>
+  <style>
+    :root {
+      /* Light theme colors */
+      --bg-light: white;
+      --text-light: black;
+
+      /* Dark theme colors */
+      --bg-dark: #1e1e1e;
+      --text-dark: white;
+    }
+
+    body.light {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #333435;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Theme Preference</h1>
+    <button id="toggleTheme">Toggle Theme</button>
+  </div>
+
+  <script>
+    const body = document.body;
+    const toggleBtn = document.getElementById("toggleTheme");
+
+    // Detect system preference
+    function setDarkorLight() {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        body.classList.add("dark");
+        body.classList.remove("light");
+      } else {
+        body.classList.add("light");
+        body.classList.remove("dark");
+      }
+    }
+
+    // Run on page load
+    setDarkorLight();
+
+    // Listen to system changes
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", setDarkorLight);
+
+    // Manual toggle
+    toggleBtn.addEventListener("click", () => {
+      body.classList.toggle("light");
+      body.classList.toggle("dark");
+    });
+  </script>
+</body>
+</html>
